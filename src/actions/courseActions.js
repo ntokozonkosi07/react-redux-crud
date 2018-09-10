@@ -26,7 +26,7 @@ var AuthorActions = {
     },
 
     deleteCourse: function(id){
-        AuthorApi.deleteAuthor(id);
+        CourseApi.deleteCourse(id);
 
         // dispatches to the stores that an author was updated
         Dispatcher.dispatch({

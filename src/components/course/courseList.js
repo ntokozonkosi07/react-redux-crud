@@ -24,7 +24,7 @@ var CourseList = React.createClass({
                     <td><a href="#">Watch</a></td>
                     <td><a href="#">Delete</a></td>
                     <td>{course.title}</td>
-                    <td>{course.author}</td>
+                    <td>{course.author.name}</td>
                     <td>{course.category}</td>
                     <td>{course.length}</td>
                 </tr>

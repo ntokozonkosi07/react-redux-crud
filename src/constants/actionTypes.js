@@ -11,5 +11,5 @@ module.exports = keyMirror({
     INIT_COURSES: null,
     CREATE_COURSE: null,
     UPDATE_COURSE: null,
-    DELETE_COURSE: null,
+    DELETE_COURSE: null
 });
