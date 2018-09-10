@@ -6,9 +6,9 @@ var Link = Router.Link;
 var AuthorActions = require('../../actions/authorActions');
 var toastr = require('toastr');
 
-var AuthorList = React.createClass({
+var CourseList = React.createClass({
     propTypes: {
-        authors: React.PropTypes.array.isRequired
+        courses: React.PropTypes.array.isRequired
     },
 
     deleteAuthor: function(id, event){
@@ -18,12 +18,15 @@ var AuthorList = React.createClass({
     },
 
     render: function () {
-        var createAuthorRow = function (author) {
+        var createAuthorRow = function (course) {
             return (
-                <tr key={author.id}>
-                    <td><a href="#" onClick={this.deleteAuthor.bind(this, author.id)}>Delete</a></td>
-                    <td><Link to="manageAuthor" params={{id: author.id}}>{author.id}</Link></td>
-                    <td>{author.firstName} {author.lastName}</td>
+                <tr key={course.id}>
+                    <td><a href="#">Watch</a></td>
+                    <td><a href="#">Delete</a></td>
+                    <td>{course.title}</td>
+                    <td>{course.author}</td>
+                    <td>{course.category}</td>
+                    <td>{course.length}</td>
                 </tr>
             );
         };
@@ -33,11 +36,14 @@ var AuthorList = React.createClass({
                 <table className="table">
                     <thead>
                         <th></th>
-                        <th>ID</th>
-                        <th>Name</th>
+                        <th></th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Category</th>
+                        <th>Length</th>
                     </thead>
                     <tbody>
-                        {this.props.authors.map(createAuthorRow, this)}
+                        {this.props.courses.map(createAuthorRow, this)}
                     </tbody>
                 </table>
             </div>
@@ -45,4 +51,4 @@ var AuthorList = React.createClass({
     }
 });
 
-module.exports = AuthorList;
+module.exports = CourseList;
