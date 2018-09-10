@@ -14,12 +14,12 @@ var CoursePage = React.createClass({
         };
     },
     componentWillMount: function(){
-        console.log('add listener onChange event');
+        console.log('add CoursePage listener onChange event');
         CourseStore.addChangeListener(this._onChange);
     },
 
     componentWillUnmount: function(){
-        console.log('remove listener onChange event');
+        console.log('remove CoursePage listener onChange event');
         CourseStore.removeChangeListener(this._onChange);
     },
 

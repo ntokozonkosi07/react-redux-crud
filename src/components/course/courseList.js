@@ -3,7 +3,7 @@
 var React = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
-var AuthorActions = require('../../actions/authorActions');
+var CourseActions = require('../../actions/courseActions');
 var toastr = require('toastr');
 
 var CourseList = React.createClass({
@@ -11,10 +11,10 @@ var CourseList = React.createClass({
         courses: React.PropTypes.array.isRequired
     },
 
-    deleteAuthor: function(id, event){
+    deleteCourse: function(id, event){
         event.preventDefault();
-        AuthorActions.deleteAuthor(id);
-        toastr.success('author deleted.');
+        CourseActions.deleteCourse(id);
+        toastr.success('course deleted.');
     },
 
     render: function () {
@@ -22,7 +22,7 @@ var CourseList = React.createClass({
             return (
                 <tr key={course.id}>
                     <td><a href="#">Watch</a></td>
-                    <td><a href="#">Delete</a></td>
+                    <td><a href="#" onClick={this.deleteCourse.bind(this, course.id)}>Delete</a></td>
                     <td>{course.title}</td>
                     <td>{course.author.name}</td>
                     <td>{course.category}</td>

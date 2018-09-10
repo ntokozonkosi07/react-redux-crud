@@ -37,6 +37,11 @@ Dispatcher.register(function(action){
             _courses = action.initialData.courses;
             CourseStore.emitChange();
             break;
+        case ActionTypes.DELETE_COURSE:
+            var courseIdx = _.findIndex(_courses, {id: action.course.id});
+            _courses.splice(courseIdx, 1);
+            CourseStore.emitChange();
+            break;
         default:
             // no op
     }
