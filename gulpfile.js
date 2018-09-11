@@ -8,6 +8,7 @@ var reactify = require('reactify'); // Transforms React JSX to JS
 var source = require('vinyl-source-stream'); //Use conventional text streams with gulp
 var concat = require('gulp-concat'); //Concatinate files
 var lint = require('gulp-eslint'); // Lint JS files, including JSX
+var clean = require('gulp-clean'); // used to delete files
 
 var config = {
     port:9002,
@@ -81,9 +82,13 @@ gulp.task('images',function(){
     .pipe(gulp.dest(config.paths.dist));
 });
 
+gulp.task('clean-scripts', function(){
+    return gulp.src(config.paths.dist+'/scripts', {read: false}).pipe(clean());
+});
+
 gulp.task('watch',function(){
     gulp.watch(config.paths.html,['html']);
     gulp.watch(config.paths.js,['js','lint']);
 });
 
-gulp.task('default',['html','js','css','images','lint','open','watch']);
+gulp.task('default',['clean-scripts','html','js','css','images','lint','open','watch']);
