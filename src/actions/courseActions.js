@@ -5,7 +5,7 @@ var CourseApi = require('../api/courseApi');
 var ActionTypes = require('../constants/actionTypes');
 
 var AuthorActions = {
-    createAuthor: function(course){
+    createCourse: function(course){
         var newCourse = CourseApi.saveCourse(course);
 
         // dispatches to the stores that an author was created
@@ -16,7 +16,7 @@ var AuthorActions = {
     },
 
     updateCourse: function(course){
-        var updatedCourse = CourseApi.updateCourse(course);
+        var updatedCourse = CourseApi.saveCourse(course);
 
         // dispatches to the stores that an author was updated
         Dispatcher.dispatch({

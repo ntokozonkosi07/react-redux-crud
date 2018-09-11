@@ -6,6 +6,7 @@ var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 var _ = require('lodash');
 var CHANGE_EVENT = 'change';
+var AuthorStore = require('../stores/authorStore');
 
 var _courses = [];
 
@@ -40,6 +41,14 @@ Dispatcher.register(function(action){
         case ActionTypes.DELETE_COURSE:
             var courseIdx = _.findIndex(_courses, {id: action.course.id});
             _courses.splice(courseIdx, 1);
+            CourseStore.emitChange();
+            break;
+        case ActionTypes.UPDATE_COURSE:
+            debugger;
+            var courseIdx = _.findIndex(_courses, {id: action.course.id});
+            var author = AuthorStore.getAuthorById(action.course.author)
+            action.course.author = author;
+            _courses.splice(courseIdx, 1, action.course);
             CourseStore.emitChange();
             break;
         default:
